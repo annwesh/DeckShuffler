@@ -7,6 +7,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"math/rand"
+	"time"
 )
 
 type deck []string
@@ -58,4 +60,13 @@ func readDeckFromFile(fileName string) deck {
 		os.Exit(0)
 	}
 	return deck(strings.Split(string(content), ",")) 
+}
+
+//shuffle logic of the current deck
+func (d deck) shuffleDeck()  {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	for i,_ := range d {
+		index := r.Intn(len(d))
+		d[i], d[index] = d[index], d[i]
+	}
 }

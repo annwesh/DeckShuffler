@@ -16,6 +16,10 @@ func main() {
 	cards.saveToFile("my_cards")
     //fmt.Println([]byte(testCheck[1]))
     cards = readDeckFromFile("my_cards")
+
+
+    cards.print()
+    cards.shuffleDeck()
     cards.print()
 
 }
